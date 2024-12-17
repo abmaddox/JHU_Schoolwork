@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+/* CSS Document for HW8 of Enterprise Web Development at JHU*/
+div.error{
+	color: red;
+	}
+	
+div.center-parent {
+	text-align: center;
+	}
+
+div.left-child{
+	text-align:left;
+	display: inline-block;
+}
+
+body {
+	text-align: center; 
+	background: #f0d573;
+	}
+	
+h3 {
+	text-align:center;
+	}
+
+img.display{
+	 width:33%;
+	 height:400px;
+	 padding:3px;
+	 float:left;
+	 }
+	
+hr.fullscreen{
+	width: 	100%;
+	border-width: 3px;
+	text-align: center;
+}
+
+#topheaderline{
+	width: 	95%;
+}
+#bottomheaderline{
+	width: 	85%;
+}

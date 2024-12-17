@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>BHC Test Page</title>
+        <meta charset="utf-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script>
+			function sendRequest(url) {
+				// get form parameters and translate them to a JSON object
+				// that is mapped to a JSON/Java object in service
+				var viewArr = $("#myForm").serializeArray();
+			  	var view = {};
+			  	// need to convert { name:"VarName", value:"ValName"} to {VarName:"ValName"}
+			  	for (var i in viewArr) {
+			    	view[viewArr[i].name] = viewArr[i].value;
+			  	}
+                          
+                // call back to service with post containing JSON data and on
+                // return process results back into page          
+                $.ajax({
+                    type:"POST",
+                    contentType: 'application/json',
+                    dataType: "json",
+                    data: JSON.stringify(view),
+                    url: url,
+                    // you will want to update success function to get specific
+                    // JSON data fields for output back to the original HTML page
+                    success: function(data) {
+						// this sets the html content of the html object
+						// with id of reponseArea.
+						let content = "<p><b>Rate: </b>"
+						
+						if(!data.rate.includes("-")){
+							content = content + data.rate;
+						}
+						
+						content = content + "<p><b>Errors:</b></p>"
+						
+						for (error in data.errors){
+							content = content + "<p>" + data.errors[error] + "</p>"
+						}
+						$("#responseArea").html(content);
+                 	}
+                });
+			};	
+		</script>
+	</head>
+	<body>
+		<!-- the form contains the input elements to collect specific information
+			 as you did in earlier work.  Make sure names of parameters correspond
+			 to the field values in the desired JSON/Java object. -->
+		<form id="myForm">
+			<!-- Add your gui widgets and input elements here -->
+			<div>
+
+				<label>Which hike? <select id='hikeSelection'
+				name="hike" required>
+					<option id='None selected'>None selected</option>
+					<option id='Fairyland Loop'>Fairyland Loop</option>
+					<option id='Mossy Cave Trail'>Mossy Cave Trail</option>
+					<option id='Navajo Loop'>Navajo Loop</option>
+					<option id='Queens Garden Trail'>Queens Garden Trail</option>
+					<option id='Bryce Canyon Rim'>Bryce Canyon Rim</option>
+				</select></label><br>
+				
+				<label>Starting when? <input id='dateSelection' type='date'
+					name="date"
+					value='' required>
+				</label> <br>
+
+				<label>For how long? <input id='durationSelection'
+					type='number' name="duration" min='1'
+					max='100' value=''
+					required> days
+				</label> <br>
+				
+				<label>How many hikers? <input id='hikersSelection'
+					type='number' name="hikers" min='1'
+					max='100' value=''
+					required> hikers
+				</label><br>
+			</div>
+			<!-- Keep the button for submitting your form, but you need to 
+				 update the parameter, url, to reference your back end 
+				 service that will process the input data -->
+			<!-- 
+			remote url: https://web3.jhuep.com/maddox_a_hw13/bhc/rates
+			local url: http://localhost:8080/maddox_a_hw13/bhc/rates
+			-->
+            <button type="button" onclick="sendRequest('https://web3.jhuep.com/maddox_a_hw13/bhc/rates')">Get Rate</button>
+		</form>     
+		<!-- This is nothing more than a labelled "output area" for your results or errors -->
+        <div id="responseArea"><pre></pre></div>
+	</body>
+</html>

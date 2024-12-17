@@ -1,0 +1,32 @@
+@charset "utf-8";
+
+/* CSS Document for HW11 of Enterprise Web Development at JHU*/
+div.error{
+	color: red;
+	}
+	
+table{
+	margin-left: auto;
+ 	margin-right: auto;
+ 	border: 1px solid black;
+  	border-collapse: collapse;
+  	background: white;
+}
+
+th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 5px;
+}
+
+body {
+	text-align: center; 
+	background: #f0d573;
+	}
+
+hr.divider{
+	width: 	50%;
+	border-width: 3px;
+	text-align: center;
+	color: gray;
+}

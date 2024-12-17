@@ -1,0 +1,56 @@
+@charset "utf-8";
+
+/* CSS Document for HW5 of Enterprise Web Development at JHU*/
+div { text-align: center; }
+
+body {text-align: center; 
+	background: #f0d573;
+	font-size: large;}
+
+dr{background: 	#ffffff}
+
+td.hikeCol{
+	font-weight: bold; 
+	color: #1e0357
+}
+
+.italic{
+	font-style: italic;
+}
+
+ul.italian{
+	font-style: italic;
+	font-weight: bold;
+}
+
+.headers{
+	background: #1e0357;
+	color: #ffffff;
+	font-weight: bold; 
+}
+
+table.bigtable{
+	width: 	750px;
+	align-content: 	center;
+	margin-left: auto;
+  	margin-right: auto;
+}
+table.mediumtable{
+	width: 	350px;
+  	border-collapse: collapse;
+  	column-rule: 1 px solid black;
+  	align-content: 	center;
+	margin-left: auto;
+  	margin-right: auto;
+}
+hr.fullscreen{
+	width: 	100%;
+	border-width: 3px;
+	text-align: center;
+}
+#topheaderline{
+	width: 	95%;
+}
+#bottomheaderline{
+	width: 	85%;
+}

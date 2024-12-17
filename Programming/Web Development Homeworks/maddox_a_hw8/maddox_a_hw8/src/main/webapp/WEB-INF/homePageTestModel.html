@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta charset='utf-8'>
+<title>Home Page for Bryce Canyon Hiking Company</title>
+<link href='./stylesheets/maddox_a_hw8.css' rel='stylesheet'
+	type='text/css'>
+<script src='./scripts/maddox_a_hw8.js'></script>
+</head>
+<body>
+
+		<form action='http://localhost:8080/maddox_a_hw8/ServletBHC'
+			method=GET onSubmit='return validateSelections()'>
+			<div class='left-child'>
+				<div class='error' id='hikeError' hidden='hidden'>
+					A hike must be selected. <br>
+				</div>
+				<label>Which hike? 
+					<select id='hikeSelection' name='hike' onBlur='validateHike()'>
+						<option value='None'>None</option>
+						<option value='Navajo Loop'>Navajo Loop</option>
+						<option value='Bryce Canyon Rim'>Bryce Canyon Rim</option>
+						<option value='Fairyland Loop'>Fairyland Loop</option>
+						<option value='Mossy Cave Trail'>Mossy Cave Trail</option>
+						<option value='Queens Garden Trail'>Queens Garden Trail</option>
+					</select>
+				</label>
+				<br>
+				
+				<div class='error' id='dateError' hidden='hidden'>
+					A date must be selected.<br>
+				</div>
+				<label>Starting when? <input id='dateSelection' type='date' name='date'
+					value='' onBlur='validateDate()'></label><br>
+					
+				<div class='error' id='durationError' hidden='hidden'>
+					A duration must be entered.<br>
+				</div>
+				<label>For how long? <input id='durationSelection'
+					type='number' name='duration' min='1' max='100' value=''
+					onBlur='validateDuration()'> days
+				</label><br>
+				
+				<div class='error' id='hikersError' hidden='hidden'>
+					A number of hikers must be entered.<br>
+				</div>
+				<label>How many hikers? <input id='hikersSelection' name='hikers'
+					type='number' min='1' max='100' value='' onBlur='validateHikers()'>
+					hikers
+				</label><br>
+				
+			</div>
+			<div>
+				<br>
+				<input type='submit' value='Get Quote'><br>
+				<div>Quote: $</div>
+			</div>
+		</form>
+</body>
+</html>
